@@ -1,4 +1,6 @@
 import  { useState, useEffect } from "react";
+import LoginPage from "./components/LoginPage";
+
 
 
 const App = () => {
@@ -35,7 +37,9 @@ const App = () => {
   };
 
   return (
-    <div className="container-full mx-auto px-4 py-16 bg-gray-900 text-white">
+    <>
+      <LoginPage />
+      <div className="container-full mx-auto px-4 py-16 bg-gray-900 text-white">
       <h1 className="text-4xl font-bold text-center mb-8">Movies</h1>
 
       {shows.length > 0 ? (
@@ -81,6 +85,7 @@ const App = () => {
         <p className="text-center text-white">Loading movies...</p>
       )}
     </div>
+    </>
   );
 };
 
