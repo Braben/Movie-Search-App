@@ -5,11 +5,13 @@
 // import Navbar from "./components/Navbar";
 // import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   return (
     <>
-      <HomePage />
+      <LoginPage />
+      {/* <HomePage /> */}
     </>
   );
 };

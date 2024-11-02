@@ -1,25 +1,26 @@
-import { useState } from "react";
+import { useState } from 'react';
+
+
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    console.log('Email:', email);
+    console.log('Password:', password);
   };
 
-  return (
-    <div className="container mx-auto px-4 py-16 bg-gray-100">
-      <div className="max-w-md mx-auto bg-white p-10 rounded shadow-md">
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
+    return (
+        <>
+        <div className="bg-fixed bg-cover bg-no-repeat" style={{ backgroundImage: "url('https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg')" }}>
+        <div className="container-full mx-auto px-10 py-11 h-screen bg-image">
+      <div className="max-w-md mx-auto bg-white p-10 rounded shadow-md mt-20">
+        <h2 className="text-3xl font-bold mb-5 justify-center text-center">LOGIN</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
             <input
@@ -32,10 +33,7 @@ function LoginPage() {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
@@ -63,15 +61,12 @@ function LoginPage() {
           </div>
         </form>
         <div className="mt-8 text-center">
-          <p>
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-500 hover:text-blue-800">
-              Sign Up
-            </a>
-          </p>
+          <p>Don't have an account? <a href="#" className="text-blue-500 hover:text-blue-800">Sign Up</a></p>
         </div>
       </div>
     </div>
+    </div>
+        </>
   );
 }
 
