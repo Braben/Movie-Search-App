@@ -1,11 +1,13 @@
 import LoginPage from "./components/LoginPage";
-import MovieList from "./components/MovieList";
+import SignupPage from "./components/SignUpPage";
+// import MovieList from "./components/MovieList";
 
 const App = () => {
   return (
     <>
       <LoginPage />
-      <MovieList />
+      
+      {/* <MovieList /> */}
     </>
   );
 };

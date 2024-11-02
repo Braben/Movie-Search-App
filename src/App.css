@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.bg-image {
+  background-image: url('https: //wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg');
+  /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  /* Ensure full viewport height */
+}
