@@ -1,15 +1,19 @@
+<<<<<<< HEAD:src/components/LoginPage.jsx
 import { useState } from 'react';
 
 
+=======
+import { useState } from "react";
+>>>>>>> 2ce580b952039f5d82e967c521e873ec6d4431c7:src/pages/LoginPage.jsx
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log("Email:", email);
+    console.log("Password:", password);
   };
 
     return (
@@ -20,7 +24,10 @@ function LoginPage() {
         <h2 className="text-3xl font-bold mb-5 justify-center text-center">LOGIN</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -33,7 +40,10 @@ function LoginPage() {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -61,7 +71,12 @@ function LoginPage() {
           </div>
         </form>
         <div className="mt-8 text-center">
-          <p>Don't have an account? <a href="#" className="text-blue-500 hover:text-blue-800">Sign Up</a></p>
+          <p>
+            Don't have an account?{" "}
+            <a href="#" className="text-blue-500 hover:text-blue-800">
+              Sign Up
+            </a>
+          </p>
         </div>
       </div>
     </div>

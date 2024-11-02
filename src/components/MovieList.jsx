@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 
 const MovieList = () => {
   const [shows, setShows] = useState([]); // Stores the movie data fetched from the API
@@ -23,6 +24,12 @@ const MovieList = () => {
     }
   };
 
+  //the query function
+  const handleSearch = (query) => {
+    console.log("Searching for:", query);
+    // Use the query to fetch or filter movie data
+  };
+
   // Fetch movies when component mounts
   useEffect(() => {
     getShows();
@@ -34,7 +41,7 @@ const MovieList = () => {
         <h1 className="text-4xl font-bold text-center mb-8">Movies</h1>
 
         {shows.length > 0 ? (
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <ul className="grid  md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Pass each show individually to MovieCard and set a unique key */}
             {shows.map((show) => (
               <MovieCard key={show.id} show={show} />
@@ -43,6 +50,11 @@ const MovieList = () => {
         ) : (
           <p className="text-center text-white">Loading movies...</p>
         )}
+      </div>
+      <div>
+        <h1 className="text-center text-3xl font-bold my-6">Movie Search</h1>
+        <SearchBar onSearch={handleSearch} />
+        {/* Render search results or other components below */}
       </div>
     </div>
   );
