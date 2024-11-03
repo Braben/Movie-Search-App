@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div
-      className="bg-fixed bg-cover bg-no-repeat h-[94vh] flex flex-col items-center justify-center text-white"
+      className="bg-fixed bg-orange-600 bg-cover bg-no-repeat h-screen bg-transparent flex flex-col items-center justify-center text-white"
       style={{
         backgroundImage:
           "url('https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg')",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-75 top-[6vh] "></div>
+      {/* <div className="absolute inset-0 bg-black opacity-75 ltop-[10vh]  "></div> */}
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
