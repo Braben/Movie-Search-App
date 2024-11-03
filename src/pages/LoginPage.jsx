@@ -1,63 +1,65 @@
-<<<<<<< HEAD:src/components/LoginPage.jsx
 import { useState } from 'react';
-
-
-=======
-import { useState } from "react";
->>>>>>> 2ce580b952039f5d82e967c521e873ec6d4431c7:src/pages/LoginPage.jsx
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    setError(''); // Reset error state
+
+    try {
+      // Simulate a login function or API call here
+      // await login(email, password);
+      navigate('/'); // Redirect to home or desired route after login
+    } catch (err) {
+      setError(err.message); // Set error message if login fails
+    }
   };
 
-    return (
-        <>
-        <div className="bg-fixed bg-cover bg-no-repeat" style={{ backgroundImage: "url('https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg')" }}>
-        <div className="container-full mx-auto px-10 py-11 h-screen bg-image">
-      <div className="max-w-md mx-auto bg-white p-10 rounded shadow-md mt-20">
-        <h2 className="text-3xl font-bold mb-5 justify-center text-center">LOGIN</h2>
+  return (
+    <div
+      className="bg-fixed bg-cover bg-no-repeat h-screen flex items-center justify-center"
+      style={{ backgroundImage: "url('https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg')" }}
+    >
+      <div className="bg-white bg-opacity-90 rounded-lg shadow-lg p-10 max-w-md w-full">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">LOGIN</h2>
+        {error && <p className="text-red-500 text-center">{error}</p>} {/* Display error message */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-md appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
               id="email"
               type="email"
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required // Optional: add validation
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-md appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
               id="password"
               type="password"
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required // Optional: add validation
             />
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-200"
               type="submit"
             >
               Sign In
@@ -71,17 +73,13 @@ function LoginPage() {
           </div>
         </form>
         <div className="mt-8 text-center">
-          <p>
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-500 hover:text-blue-800">
-              Sign Up
-            </a>
+          <p className="text-gray-700">
+            Don’t have an account?{' '}
+            <Link to="/signup" className="text-blue-500 hover:text-blue-800">Sign Up</Link>
           </p>
         </div>
       </div>
     </div>
-    </div>
-        </>
   );
 }
 
