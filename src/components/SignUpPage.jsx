@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -65,7 +66,7 @@ function SignUpPage() {
         <div className="mt-8 text-center">
           <p className="text-gray-700">
             Already have an account?{' '}
-            <a href="#" className="text-blue-500 hover:text-blue-800">Log In</a>
+            <Link to="/login" className="text-blue-500 hover:text-blue-800">Log In</Link>
           </p>
         </div>
       </div>
