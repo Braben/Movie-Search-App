@@ -57,7 +57,7 @@ function LoginPage() {
           </div>
         </form>
         <div className="mt-8 text-center">
-          <p>Don't have an account? <a href="#" className="text-blue-500 hover:text-blue-800">Sign Up</a></p>
+          <p>Dont have an account? <a href="#" className="text-blue-500 hover:text-blue-800">Sign Up</a></p>
         </div>
       </div>
     </div>

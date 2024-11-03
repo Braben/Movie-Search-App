@@ -1,14 +1,23 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    setError(''); // Reset error state
+
+    try {
+      // Simulate a login function or API call here
+      // await login(email, password);
+      navigate('/'); // Redirect to home or desired route after login
+    } catch (err) {
+      setError(err.message); // Set error message if login fails
+    }
   };
 
   return (
@@ -18,6 +27,7 @@ function LoginPage() {
     >
       <div className="bg-white bg-opacity-90 rounded-lg shadow-lg p-10 max-w-md w-full">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">LOGIN</h2>
+        {error && <p className="text-red-500 text-center">{error}</p>} {/* Display error message */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -30,6 +40,7 @@ function LoginPage() {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required // Optional: add validation
             />
           </div>
           <div className="mb-6">
@@ -43,6 +54,7 @@ function LoginPage() {
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required // Optional: add validation
             />
           </div>
           <div className="flex items-center justify-between">
@@ -62,7 +74,7 @@ function LoginPage() {
         </form>
         <div className="mt-8 text-center">
           <p className="text-gray-700">
-            Dont have an account?{' '}
+            Don’t have an account?{' '}
             <Link to="/signup" className="text-blue-500 hover:text-blue-800">Sign Up</Link>
           </p>
         </div>
