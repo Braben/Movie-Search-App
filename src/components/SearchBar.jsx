@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MovieDetails from "./MovieDetails";
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState("");
@@ -8,7 +9,10 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
-    onSearch(query); // Pass the search query to the parent component or API
+    if (query.trim()) {
+      onSearch(query); // Send the search query to MovieList
+    }
+    setQuery(""); // Clear the input after search
   };
 
   return (

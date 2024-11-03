@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -13,31 +15,46 @@ const Navbar = () => {
 
         {/* Navbar Links */}
         <div className="hidden md:flex space-x-6">
-          <a href="#" className="hover:text-gray-400">
+          <NavLink
+            to="/"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Home
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Movies
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/download"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Download
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/forum"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Forum
-          </a>
+          </NavLink>
         </div>
 
         {/* Auth Buttons */}
         <div className="hidden md:flex space-x-4">
-          <a href="#" className="hover:text-gray-400">
+          <NavLink
+            to="/login"
+            className="bg-blue-500 rounded px-3 py-2 hover:text-gray-400"
+          >
             Sign In
-          </a>
-          <a
-            href="#"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="bg-blue-600 rounded px-3 py-2 hover:text-gray-400"
           >
             Sign Up
-          </a>
+          </NavLink>
         </div>
 
         {/* Mobile Menu Button */}
