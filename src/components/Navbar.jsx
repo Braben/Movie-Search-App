@@ -1,48 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to toggle mobile menu
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen); // Toggle the menu state
+  };
+
   return (
-    <nav className="bg-gray-900 text-white px-4 py-4">
+    <nav className="bg-gray-900 text-white px-4 py-4 z-30">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <a href="#" className="hover:text-gray-400">
+          <NavLink
+            to="/"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             MyApp
-          </a>
+          </NavLink>
         </div>
 
-        {/* Navbar Links */}
+        {/* Navbar Links for Desktop */}
         <div className="hidden md:flex space-x-6">
-          <a href="#" className="hover:text-gray-400">
+          <NavLink
+            to="/"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Home
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Movies
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/download"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Download
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/forum"
+            className="hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+          >
             Forum
-          </a>
+          </NavLink>
         </div>
 
-        {/* Auth Buttons */}
+        {/* Auth Buttons for Desktop */}
         <div className="hidden md:flex space-x-4">
-          <a href="#" className="hover:text-gray-400">
+          <NavLink
+            to="/login"
+            className="bg-blue-500 rounded px-3 py-2 hover:text-gray-400"
+          >
             Sign In
-          </a>
-          <a
-            href="#"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="bg-blue-600 rounded px-3 py-2 hover:text-gray-400"
           >
             Sign Up
-          </a>
+          </NavLink>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button className="text-gray-400 hover:text-white focus:outline-none">
+          <button
+            onClick={handleToggle}
+            className="text-gray-400 hover:text-white focus:outline-none"
+          >
             <svg
               className="h-6 w-6"
               fill="none"
@@ -59,6 +87,58 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Links */}
+      {isOpen && (
+        <div className="md:hidden mt-4 space-y-4">
+          <NavLink
+            to="/"
+            className="block text-center hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+            onClick={() => setIsOpen(false)} // Close menu on link click
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className="block text-center hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+            onClick={() => setIsOpen(false)}
+          >
+            Movies
+          </NavLink>
+          <NavLink
+            to="/download"
+            className="block text-center hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+            onClick={() => setIsOpen(false)}
+          >
+            Download
+          </NavLink>
+          <NavLink
+            to="/forum"
+            className="block text-center hover:text-gray-400 hover:bg-blue-500 px-3 py-2 rounded-md"
+            onClick={() => setIsOpen(false)}
+          >
+            Forum
+          </NavLink>
+
+          {/* Auth Buttons for Mobile */}
+          <div className="space-y-4 text-center">
+            <NavLink
+              to="/login"
+              className="block bg-blue-500 rounded px-3 py-2 hover:text-gray-400"
+              onClick={() => setIsOpen(false)}
+            >
+              Sign In
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="block bg-blue-600 rounded px-3 py-2 hover:text-gray-400"
+              onClick={() => setIsOpen(false)}
+            >
+              Sign Up
+            </NavLink>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

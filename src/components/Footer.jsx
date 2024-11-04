@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,32 +19,22 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-white text-xl mb-3">Quick Links</h3>
-            <ul>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Movies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Download
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Forum
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Sign In
-                </a>
-              </li>
+            <ul className="flex flex-col">
+              <Link to="/" className="hover:text-white transition">
+                Home
+              </Link>
+              <Link to="/movies" className="hover:text-white transition">
+                Movies
+              </Link>
+              <Link to="/download" className="hover:text-white transition">
+                Download
+              </Link>
+              <Link to="/forum" className="hover:text-white transition">
+                Forum
+              </Link>
+              <Link to="/signin" className="hover:text-white transition">
+                Sign In
+              </Link>
             </ul>
           </div>
 

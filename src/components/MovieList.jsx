@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 
 const MovieList = () => {
   const [shows, setShows] = useState([]); // Stores the movie data fetched from the API
+  const [filteredMovies, setFilteredMovies] = useState([]); // Stores the filtered movie data
 
   const getShows = async () => {
     try {
@@ -17,17 +18,24 @@ const MovieList = () => {
       }
 
       const data = await response.json();
-      setShows(data.results); // Update shows state with fetched movie data
+      setShows(data.results); // Set the full list of shows
+      setFilteredMovies(data.results); // Initialize filteredMovies with the full list
       console.log("Movies fetched successfully!");
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
   };
 
-  //the query function
+  // Handle search by filtering shows based on the search query
   const handleSearch = (query) => {
     console.log("Searching for:", query);
-    // Use the query to fetch or filter movie data
+
+    const filtered = shows.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredMovies(filtered); // Update filteredMovies with search results
+    console.log(filtered.length);
   };
 
   // Fetch movies when component mounts
@@ -40,21 +48,23 @@ const MovieList = () => {
       <div className="container-full mx-auto px-4 py-16 bg-gray-900 text-white">
         <h1 className="text-4xl font-bold text-center mb-8">Movies</h1>
 
-        {shows.length > 0 ? (
-          <ul className="grid  md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Pass each show individually to MovieCard and set a unique key */}
-            {shows.map((show) => (
-              <MovieCard key={show.id} show={show} />
+        {/* Pass handleSearch to SearchBar */}
+        <div className="mb-3">
+          <SearchBar onSearch={handleSearch} />
+          <h1>{`${filteredMovies.length} results found`}</h1>
+        </div>
+
+        {/* Render filteredMovies */}
+
+        {filteredMovies.length > 0 ? (
+          <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {filteredMovies.map((movie) => (
+              <MovieCard key={movie.id} show={movie} />
             ))}
           </ul>
         ) : (
-          <p className="text-center text-white">Loading movies...</p>
+          <p className="text-center text-white">No movies found.</p>
         )}
-      </div>
-      <div>
-        <h1 className="text-center text-3xl font-bold my-6">Movie Search</h1>
-        <SearchBar onSearch={handleSearch} />
-        {/* Render search results or other components below */}
       </div>
     </div>
   );
